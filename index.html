@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pygame Web</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        async function main() {
+            let pyodide = await loadPyodide();
+            await pyodide.loadPackage("pygame");
+
+            // Fetch the game script
+            let response = await fetch("shooter_tut14.py");
+            let gameScript = await response.text();
+
+            // Run the game script
+            pyodide.runPython(gameScript);
+        }
+        main();
+    </script>
+</body>
+</html>
